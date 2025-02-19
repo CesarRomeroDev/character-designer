@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { initFlowbite } from 'flowbite'
 import { routes } from '../../../characters/characters.routes';
 import { ThemeBlackDirective } from '../../directives/theme-black.directive';
+import { FlowbiteService } from '../../../services/flowbite.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +15,19 @@ import { ThemeBlackDirective } from '../../directives/theme-black.directive';
 })
 export class NavbarComponent implements OnInit{
 
+  constructor(
+    private flowbiteService: FlowbiteService,
+  ){}
+
   ngOnInit(): void {
-    initFlowbite();
+    this.flowbiteService.loadFlowbite(flowbite => {
+      this.menuItems;
+      flowbite = initFlowbite();
+    });
   }
 
   public menuItems = routes
     .map( route => route.children ?? [])
     .flat()
     .filter( route => !route.path?.includes('**') )
-
 }

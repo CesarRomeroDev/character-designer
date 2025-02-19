@@ -1,4 +1,6 @@
 import { AfterViewInit, Directive } from '@angular/core';
+import { FlowbiteService } from '../../services/flowbite.service';
+import { initFlowbite } from 'flowbite';
 
 @Directive({
   selector: '[ThemeBlackDirective]',
@@ -6,8 +8,15 @@ import { AfterViewInit, Directive } from '@angular/core';
 })
 export class ThemeBlackDirective implements AfterViewInit{
 
+  constructor(
+    private flowbiteService: FlowbiteService,
+  ){}
+
   ngAfterViewInit(): void {
-    this.themeBlack();
+    this.flowbiteService.loadFlowbite(flowbite => {
+      this.themeBlack();
+      flowbite = initFlowbite();
+    });
   }
 
   themeBlack(){

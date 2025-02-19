@@ -23,6 +23,13 @@ El formato se adhiere a [Keep a Changelog](https://keepachangelog.com/) y sigue 
 - Enumera cada punto con guiones (-).
 - Sé claro y conciso.
 
+## [0.2.0] 2025-02-18
+
+### Added 2025-02-18
+
+- Se implementa Server-side Rendering
+- Se implementa servicio personalizado para habilitar el uso de Flowbite con SSR
+
 ## [0.1.0] 2025-02-13
 
 ### Added 2025-02-13
