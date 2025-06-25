@@ -23,6 +23,12 @@ El formato se adhiere a [Keep a Changelog](https://keepachangelog.com/) y sigue 
 - Enumera cada punto con guiones (-).
 - Sé claro y conciso.
 
+## [0.3.0] 2025-06-25
+
+### Added 2025-02-25
+
+- Se implementa SEO en vistas: about y work.
+
 ## [0.2.0] 2025-02-18
 
 ### Added 2025-02-18
