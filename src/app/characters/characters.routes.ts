@@ -7,7 +7,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/welcome/welcome.component')
   },
   {
-    path: 'home',
+    path: '',
     loadComponent: () => import('./pages/home/home.component'),
     children: [
       {

@@ -23,9 +23,22 @@ El formato se adhiere a [Keep a Changelog](https://keepachangelog.com/) y sigue 
 - Enumera cada punto con guiones (-).
 - Sé claro y conciso.
 
+## [0.4.0] 2025-07-23
+
+## ### Added 2025-07-23
+
+- Se trabaja en la vista principal welcome, se implementa carousel.
+- Se implementan imagenes en carousel de internet (cambiar imagenes una vez que se tengan las reales).
+- Se implementa modo oscuro en la vista welcome.
+- Se implementan redes dociales "icons" (Modificar bien los tamaños y centrar).
+
+## ### Changed
+
+- Se modifica el color de modo dark en navbar: de dark:bg-gray-900 a dark:bg-gray-800.
+
 ## [0.3.0] 2025-06-25
 
-### Added 2025-02-25
+### Added 2025-06-25
 
 - Se implementa SEO en vistas: about y work.
 
