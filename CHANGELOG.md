@@ -23,6 +23,14 @@ El formato se adhiere a [Keep a Changelog](https://keepachangelog.com/) y sigue 
 - Enumera cada punto con guiones (-).
 - Sé claro y conciso.
 
+## [0.5.0] 2025-08-10
+
+## ### Added 2025-08-10
+
+- Se trabaja en la implementacion de routerLink en direccionamiento a tasting-menu y about.
+- Se implementan imagenes de arceo juarez en carousel.
+- Se modifica font-zise de la tarjeta principal de welcome.
+
 ## [0.4.0] 2025-07-23
 
 ## ### Added 2025-07-23

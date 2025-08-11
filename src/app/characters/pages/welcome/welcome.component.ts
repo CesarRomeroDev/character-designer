@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FlowbiteService } from '../../../services/flowbite.service';
 import { initFlowbite } from 'flowbite';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
