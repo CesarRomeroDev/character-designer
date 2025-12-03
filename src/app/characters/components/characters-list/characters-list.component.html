@@ -1,0 +1,17 @@
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+  @for (item of characterList(); track item) {
+    @if ( !isLoading()) {
+      <characters-list-items [characterListItems]="item.url" [characterListItemsHeight]="item.height" />
+    }@else {
+      <shared-skeleton-loader [widthImg]="item.width" [heightImg]="item.height" [unitImg]="item.unit"/>
+    }
+  }
+</div>
+
+
+<!--     @defer (){
+      <characters-list-items [characterListItems]="item"/>
+    } @placeholder (minimum 500ms){
+      <shared-skeleton-loader></shared-skeleton-loader>
+    } -->
+
