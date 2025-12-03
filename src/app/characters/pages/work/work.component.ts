@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { Meta, Title } from '@angular/platform-browser';
 import { CharactersListComponent } from "../../components/characters-list/characters-list.component";
 import { Character } from '../../interfaces/character.interface';
+import { FlowbiteService } from '../../../services/flowbite.service';
+import { initFlowbite } from 'flowbite';
 
 let imageUrls: Character[] = [
   {
@@ -120,7 +122,8 @@ let imageUrls: Character[] = [
   imports: [CharactersListComponent],
   templateUrl: './work.component.html',
   styleUrl: './work.component.css',
-  host: {ngSkipHydration: 'true'},
+  /* host: {ngSkipHydration: 'true'}, */
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class WorkComponent implements OnInit{
 
@@ -129,11 +132,21 @@ export default class WorkComponent implements OnInit{
 
   workCharacter = signal<Character[]>(imageUrls)
 
+  constructor(
+    private flowbiteService: FlowbiteService
+  ){}
+
   ngOnInit(): void {
-    this.title.setTitle('Project');
-    this.meta.updateTag( { name: 'description', content: 'Esté es mi Trabajo' } );
-    this.meta.updateTag( { name: 'og:title', content: 'Project' } );
-    this.meta.updateTag( { name: 'keywords', content: 'Julio Arceo Juarez: illustrator & character designer' } );
+
+    this.flowbiteService.loadFlowbite(flowbite => {
+      this.title.setTitle('Project');
+      this.meta.updateTag( { name: 'description', content: 'Esté es mi Trabajo' } );
+      this.meta.updateTag( { name: 'og:title', content: 'Project' } );
+      this.meta.updateTag( { name: 'keywords', content: 'Julio Arceo Juarez: illustrator & character designer' } );
+
+      flowbite = initFlowbite();
+    });
+
   }
 
 }

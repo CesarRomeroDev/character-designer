@@ -1,8 +1,10 @@
-import { Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CharactersListComponent } from "../../components/characters-list/characters-list.component";
 import { SkeletonLoaderComponent } from '../../../shared/components/ui/skeleton-loader/skeleton-loader.component';
 import { Character } from '../../interfaces/character.interface';
+import { FlowbiteService } from '../../../services/flowbite.service';
+import { initFlowbite } from 'flowbite';
 
 let imageUrls: Character[] = [
   {
@@ -85,30 +87,36 @@ let imageUrls: Character[] = [
   imports: [SkeletonLoaderComponent],
   templateUrl: './tasting.component.html',
   styleUrl: './tasting.component.css',
-  host: {ngSkipHydration: 'true'},
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class TastingComponent implements OnInit{
 
 
   public isLoading = signal(true);
   public tastingImgs = signal<Character[]>(imageUrls);
-  public scrollDivRef = viewChild<ElementRef<HTMLDListElement>>('groupDiv')
+  public scrollDivRef = viewChild<ElementRef<HTMLDListElement>>('groupDiv');
   public startSlice = signal(0);
   private title = inject(Title);
   private meta = inject(Meta);
 
+  constructor(
+    private flowbiteService: FlowbiteService
+  ){}
+
   ngOnInit(): void {
+    this.flowbiteService.loadFlowbite(flowbite => {
 
-    this.tastingImgsOrder();
-    this.title.setTitle('tasting-menu');
-    this.meta.updateTag( { name: 'description', content: 'Esté es mi Trabajo' } );
-    this.meta.updateTag( { name: 'og:title', content: 'tasting-menu' } );
-    this.meta.updateTag( { name: 'keywords', content: 'Julio Arceo Juarez: illustrator & character designer' } );
+      this.tastingImgsOrder();
+      this.title.setTitle('tasting-menu');
+      this.meta.updateTag( { name: 'description', content: 'Esté es mi Trabajo' } );
+      this.meta.updateTag( { name: 'og:title', content: 'tasting-menu' } );
+      this.meta.updateTag( { name: 'keywords', content: 'Julio Arceo Juarez: illustrator & character designer' } )
+      setTimeout(() => {
+        this.isLoading.set(false);
+      },1000);
 
-    setTimeout(() => {
-      this.isLoading.set(false);
-    },1000);
-
+      flowbite = initFlowbite();
+    });
   }
 
   tastingImgsOrder = computed<Character [][]>( () => {
