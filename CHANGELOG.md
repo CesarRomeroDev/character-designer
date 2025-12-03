@@ -23,15 +23,22 @@ El formato se adhiere a [Keep a Changelog](https://keepachangelog.com/) y sigue 
 - Enumera cada punto con guiones (-).
 - Sé claro y conciso.
 
+## [0.6.1] 2025-12-03
+
+## ### Fixed 2025-12-03
+
+- Se corrige error de carga en imagenes.
+- Se implementa ChangeDetectionStrategy para la carga de imagenes.
+
 ## [0.6.0] 2025-12-02
+
+## ### Added 2025-12-02
 
 - Se realizan las vistas testingMenu y Project.
 - Se imlementa skeleton para la carga diferida de imagenes.
 - Se implenta interfaces para las imagenes.
 - Se realiza el diseño Masonry en tastingMenu.
 - Se implementa diseño de galeria en project.
-
-## ### Added 2025-12-02
 
 ## [0.5.0] 2025-08-10
 
