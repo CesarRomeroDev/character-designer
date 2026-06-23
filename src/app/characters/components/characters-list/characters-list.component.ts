@@ -29,7 +29,7 @@ export class CharactersListComponent implements OnInit{
 
       setTimeout(() => {
         this.isLoading.set(false);
-      },1000);
+      },500);
 
       flowbite = initFlowbite();
     });

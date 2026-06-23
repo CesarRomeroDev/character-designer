@@ -5,7 +5,7 @@ import { NavbarComponent } from "../../../shared/components/navbar/navbar.compon
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, RouterOutlet, RouterModule],
+  imports: [RouterOutlet, RouterModule, NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
