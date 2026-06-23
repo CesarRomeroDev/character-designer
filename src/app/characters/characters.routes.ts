@@ -1,12 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  {
-    path: 'welcome',
-    title: 'Welcome',
-    loadComponent: () => import('./pages/welcome/welcome.component')
-  },
-  {
+/*   {
     path: '',
     loadComponent: () => import('./pages/home/home.component'),
     children: [
@@ -31,12 +26,7 @@ export const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '**',
-    redirectTo: 'welcome',
-    pathMatch: 'full',
-  }
+  }, */
 ];
 
 

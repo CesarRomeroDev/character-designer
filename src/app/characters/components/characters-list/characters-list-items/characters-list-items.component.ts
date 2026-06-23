@@ -15,7 +15,7 @@ export class CharactersListItemsComponent {
 
   //clase height para imagen
     imageClassesHeight = computed(() => {
-      const baseClasses = `h-${this.characterListItemsHeight()} w-full object-cover rounded-lg`;
+      const baseClasses = `h-${this.characterListItemsHeight()} w-full object-cover rounded-lg dark:drop-shadow-[0px_0px_0_white]`;
       return baseClasses;
     });
 

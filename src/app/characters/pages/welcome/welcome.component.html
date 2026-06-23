@@ -1,27 +1,13 @@
 <div class="bg-white dark:bg-black w-full h-screen" style="padding: 20px 20px 20px 20px;">
   <div id="default-carousel" class="relative w-full h-full" data-carousel="slide">
       <!-- Carousel wrapper -->
-      <div class="relative h-full overflow-hidden rounded-lg">
-           <!-- Item 1 -->
+      <div class="relative h-full overflow-hidden rounded-lg transition-all duration-300">
+        @for (item of welcomeCharacter(); track $index) {
+          <!-- Item 1 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a7f323108315227.Y3JvcCw1NTk0LDQzNzUsMCw4MTY.png" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+              <img [src]="item.url" loading="lazy" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
           </div>
-          <!-- Item 2 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="https://media.licdn.com/dms/image/v2/D5622AQE0qet2nvYImQ/feedshare-shrink_800/B56Zf1RdgtHQAg-/0/1752166686898?e=2147483647&v=beta&t=2-88mR6nBVHxXpuzoeLkBDxraXlxHyP4A31lGYn6ghU" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div>
-          <!-- Item 3 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="https://media.licdn.com/dms/image/v2/D4E22AQHtRMLN1-2nCg/feedshare-shrink_800/B4EZdKcIE_H0Ag-/0/1749300578198?e=2147483647&v=beta&t=GzNYQJF_91N8B3tUpeF0tI3_vlwvvFv4reItQ1BzMD4" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div>
-          <!-- Item 4 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="https://media.licdn.com/dms/image/v2/D5622AQGnS835-c8oXg/feedshare-shrink_800/B56ZfMtvExHUAg-/0/1751486231284?e=2147483647&v=beta&t=-AzBXgKLFkr5PtlC-o1U--D0lbHrTyEYcXSkkbMESoI" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div>
-          <!-- Item 5 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img src="https://media.licdn.com/dms/image/v2/D5622AQHef7rAKDJYzg/feedshare-shrink_800/B56ZesMtEPH8Ag-/0/1750940702596?e=2147483647&v=beta&t=6QSPzzftmed9RP4dBI2Xkx95lSgV8SgiP0JOsG7KsSw" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-          </div>
+        }
       </div>
       <div class="absolute z-40" style="top: 90%; left: 50%; transform: translate(-50%, -50%);">
         <div class="flex items-stretch  mb-5">
@@ -72,12 +58,12 @@
             <h5 class="mb-2 text-sm max-sm:text-xs font-semibold font-[calluna] tracking-[0.2rem] text-[#f7aa73]">ILLUSTRATOR & CHARACTER DESIGNER</h5>
             <p class="mb-5 text-5xl max-md:text-2xl font-semibold font-[futura-pt] tracking-widest text-[#999] dark:text-white">ARCEO JUAREZ</p>
             <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-                <a [routerLink]="['/portfolio/tasting-menu']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                <a [routerLink]="['/tasting-menu']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <div class="text-left rtl:text-right">
                         <div class="mt-auto font-[europa] max-sm:text-xs text-sm font-light tracking-[0.2rem]">PORTFOLIO</div>
                     </div>
                 </a>
-                <a [routerLink]="['/portfolio/about']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                <a [routerLink]="['/about']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <div class="text-left rtl:text-right">
                         <div class="mt-auto font-[europa] max-sm:text-xs text-sm font-light tracking-[0.2rem]">ABOUT</div>
                     </div>

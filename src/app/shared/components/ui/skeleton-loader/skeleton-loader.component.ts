@@ -9,9 +9,7 @@ import { Component, computed, input } from '@angular/core';
 })
 export class SkeletonLoaderComponent {
 
-  widthImg = input.required<string>();
-  heightImg = input.required<string>();
-  unitImg = input.required<string>();
+  heightImg = input<string>();
 
     // Clases dinámicas para la imagen
   imageClasses = computed(() => {

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { initFlowbite } from 'flowbite'
-import { routes } from '../../../characters/characters.routes';
+import { routes } from '../../../app.routes';
 import { ThemeBlackDirective } from '../../directives/theme-black.directive';
 import { FlowbiteService } from '../../../services/flowbite.service';
 

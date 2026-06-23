@@ -1,18 +1,31 @@
+import { Asset } from "../interfaces/asset.interface";
 import { Character } from "../interfaces/character.interface";
-import { ProjectsItem } from "../interfaces/characterPortfolio.interface";
 
 
-export class CharacterTasting {
-  static mapPortfolioToCharacter( item: ProjectsItem ): Character {
+export class AssetMapper {
+  // Para galería y tasting-menu — usa url_thumb (imagen ligera 800px)
+  static toCharacter(asset: Asset): Character {
     return {
-      url: item.images.url,
-      width: item.images.width,
-      height: item.images.height,
-      unit: item.images.dimensions.unit
+      url: asset.urlThumb ?? asset.urlFull, // si existe thumb la usa, si no usa full
+      height: '64',
     };
   }
-
-  static mapPortfolioToCharacterArray( item: ProjectsItem[] ): Character[] {
-    return item.map(this.mapPortfolioToCharacter);
+  // Array para galería — usa thumbs
+  static toCharacterArray(assets: Asset[]): Character[] {
+    return assets.map(asset => this.toCharacter(asset));
   }
+
+
+    // Para vista detalle del proyecto — usa url_full (imagen completa 1200px)
+  static toCharacterFull(asset: Asset): Character {
+    return {
+      url: asset.urlFull,
+      height: '64',
+    };
+  }
+    // Array para detalle — usa full
+  static toCharacterArrayFull(assets: Asset[]): Character[] {
+    return assets.map(asset => this.toCharacterFull(asset));
+  }
+
 }
