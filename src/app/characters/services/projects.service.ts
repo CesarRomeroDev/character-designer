@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { enviroment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { Project } from '../interfaces/project.interface';
 
@@ -15,7 +15,7 @@ export class ProjectsService {
   private http = inject(HttpClient);
 
   //URL base del Backend leida desde el archivo de entorno
-  private apiUrl = `${enviroment.apiUrl}/projects`;
+  private apiUrl = `${environment.apiUrl}/projects`;
 
   // Obtiene todos los proyectos con sus assets
   getAllProjects(): Observable<Project[]>{
