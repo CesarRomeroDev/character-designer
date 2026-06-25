@@ -5,7 +5,7 @@
         @for (item of welcomeCharacter(); track $index) {
           <!-- Item 1 -->
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img [src]="item.url" loading="lazy" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
+              <img [src]="item.url" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
           </div>
         }
       </div>
@@ -58,12 +58,12 @@
             <h5 class="mb-2 text-sm max-sm:text-xs font-semibold font-[calluna] tracking-[0.2rem] text-[#f7aa73]">ILLUSTRATOR & CHARACTER DESIGNER</h5>
             <p class="mb-5 text-5xl max-md:text-2xl font-semibold font-[futura-pt] tracking-widest text-[#999] dark:text-white">ARCEO JUAREZ</p>
             <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-                <a [routerLink]="['/tasting-menu']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                <a [routerLink]="['tasting-menu']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <div class="text-left rtl:text-right">
                         <div class="mt-auto font-[europa] max-sm:text-xs text-sm font-light tracking-[0.2rem]">PORTFOLIO</div>
                     </div>
                 </a>
-                <a [routerLink]="['/about']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                <a [routerLink]="['about']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
                     <div class="text-left rtl:text-right">
                         <div class="mt-auto font-[europa] max-sm:text-xs text-sm font-light tracking-[0.2rem]">ABOUT</div>
                     </div>

@@ -10,7 +10,7 @@
           @if ( !isLoading() ) {
             <div>
                 <img class="h-auto max-w-full rounded-lg dark:drop-shadow-[0px_0px_0_white]"
-                [src]="item.url" alt="" loading="lazy">
+                [src]="item.url" alt="">
             </div>
           }@else {
             <shared-skeleton-loader [heightImg]="item.height"></shared-skeleton-loader>
