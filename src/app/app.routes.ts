@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: 'welcome',
     title: 'Welcome',
-    loadComponent: () => import('./shared/page/welcome/welcome.component')
+    loadComponent: () => import('./characters/pages/welcome/welcome.component')
   },
   {
     path: '',
