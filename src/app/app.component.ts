@@ -21,9 +21,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
        // Solo inicializa Flowbite en el navegador, nunca en el servidor (SSR)
     // Esto evita el error del carousel buscando elementos que no existen
-    if (isPlatformBrowser(this.platformId)) {
+   /*  if (isPlatformBrowser(this.platformId)) {
       this.flowbiteService.loadFlowbite(() => {});
-    }
+    } */
   }
 
 }

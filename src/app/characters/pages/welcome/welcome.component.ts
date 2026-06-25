@@ -6,9 +6,9 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 import { FlowbiteService } from '../../../services/flowbite.service';
-import { ProjectsService } from '../../../characters/services/projects.service';
-import { Character } from '../../../characters/interfaces/character.interface';
-import { AssetMapper } from '../../../characters/mapper/character.mapper';
+import { ProjectsService } from '../../services/projects.service';
+import { Character } from '../../interfaces/character.interface';
+import { AssetMapper } from '../../mapper/character.mapper';
 
 @Component({
   selector: 'app-welcome',
