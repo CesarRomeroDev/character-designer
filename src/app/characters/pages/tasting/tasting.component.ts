@@ -54,7 +54,7 @@ export default class TastingComponent implements OnInit{
 
           setTimeout(() => {
             this.isLoading.set(false);
-          },500);
+          },200);
         },
         error: (err) => {
         console.error('Error cargando proyectos:', err);
