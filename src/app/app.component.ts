@@ -2,7 +2,7 @@ import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { initFlowbite } from 'flowbite'
-import { FlowbiteService } from './services/flowbite.service';
+import { FlowbiteService } from '../services/flowbite.service';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -21,9 +21,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
        // Solo inicializa Flowbite en el navegador, nunca en el servidor (SSR)
     // Esto evita el error del carousel buscando elementos que no existen
-   /*  if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
       this.flowbiteService.loadFlowbite(() => {});
-    } */
+    }
   }
 
 }
