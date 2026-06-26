@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { CharactersListComponent } from "../../components/characters-list/characters-list.component";
-import { FlowbiteService } from '../../../services/flowbite.service';
+import { FlowbiteService } from '../../../../services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { ProjectsService } from '../../services/projects.service';
 import { Character } from '../../interfaces/character.interface';

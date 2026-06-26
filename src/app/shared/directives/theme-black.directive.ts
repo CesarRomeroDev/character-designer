@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive } from '@angular/core';
-import { FlowbiteService } from '../../services/flowbite.service';
+import { FlowbiteService } from '../../../services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 
 @Directive({
