@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input, OnInit, signal } from '@angu
 import { CharactersListItemsComponent } from "./characters-list-items/characters-list-items.component";
 import { SkeletonLoaderComponent } from "../../../shared/components/ui/skeleton-loader/skeleton-loader.component";
 import { Character } from '../../interfaces/character.interface';
-import { FlowbiteService } from '../../../services/flowbite.service';
+import { FlowbiteService } from '../../../../services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 
 @Component({

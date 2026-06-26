@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { initFlowbite } from 'flowbite'
 import { routes } from '../../../app.routes';
 import { ThemeBlackDirective } from '../../directives/theme-black.directive';
-import { FlowbiteService } from '../../../services/flowbite.service';
+import { FlowbiteService } from '../../../../services/flowbite.service';
 
 @Component({
   selector: 'app-navbar',

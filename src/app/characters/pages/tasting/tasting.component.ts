@@ -3,7 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { CharactersListComponent } from "../../components/characters-list/characters-list.component";
 import { SkeletonLoaderComponent } from '../../../shared/components/ui/skeleton-loader/skeleton-loader.component';
 import { Character } from '../../interfaces/character.interface';
-import { FlowbiteService } from '../../../services/flowbite.service';
+import { FlowbiteService } from '../../../../services/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { ProjectsService } from '../../services/projects.service';
 import { AssetMapper } from '../../mapper/character.mapper';
