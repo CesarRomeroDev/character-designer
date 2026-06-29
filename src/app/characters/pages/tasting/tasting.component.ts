@@ -32,14 +32,15 @@ export default class TastingComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.isLoading.set(true); //Inicia la carga
+    this.getTesting();
+    this.tastingImgsOrder();
     this.flowbiteService.loadFlowbite(flowbite => {
       flowbite = initFlowbite();
       this.title.setTitle('tasting-menu');
       this.meta.updateTag( { name: 'description', content: 'Esté es mi Trabajo' } );
       this.meta.updateTag( { name: 'og:title', content: 'tasting-menu' } );
       this.meta.updateTag( { name: 'keywords', content: 'Julio Arceo Juarez: illustrator & character designer' } );
-      this.getTesting();
-      this.tastingImgsOrder();
     });
   }
 
@@ -51,14 +52,11 @@ export default class TastingComponent implements OnInit{
           const allAssets = projects.flatMap(p => p.assets);
           // Convierte Asset[] a Character[] usando el mapper
           this.tastingImgs.set(AssetMapper.toCharacterArray(allAssets));
-
-          setTimeout(() => {
-            this.isLoading.set(false);
-          },200);
+          this.isLoading.set(false); //se apaga SOLO cuando ya llegaron los datos
         },
         error: (err) => {
         console.error('Error cargando proyectos:', err);
-        this.isLoading.set(false);
+        this.isLoading.set(false); // tambien se apaga si hay error, para no dejar el skeleton infinito
         }
       });
   }

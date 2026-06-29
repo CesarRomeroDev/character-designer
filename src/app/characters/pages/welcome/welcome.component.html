@@ -3,10 +3,14 @@
       <!-- Carousel wrapper -->
       <div class="relative h-full overflow-hidden rounded-lg transition-all duration-300">
         @for (item of welcomeCharacter(); track $index) {
-          <!-- Item 1 -->
-          <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <img [src]="item.url" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
-          </div>
+          @if (!isLoading()) {
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img [src]="item.url" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
+            </div>
+          }@else{
+            <shared-skeleton-loader [heightImg]="item.height"></shared-skeleton-loader>
+          }
         }
       </div>
       <div class="absolute z-40" style="top: 90%; left: 50%; transform: translate(-50%, -50%);">

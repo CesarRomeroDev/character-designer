@@ -9,7 +9,7 @@
         @for (item of tasting; track $index) {
           @if ( !isLoading() ) {
             <div>
-                <img class="h-auto max-w-full rounded-lg dark:drop-shadow-[0px_0px_0_white]"
+                <img  class="h-auto max-w-full rounded-lg dark:drop-shadow-[0px_0px_0_white]"
                 [src]="item.url" alt="">
             </div>
           }@else {
