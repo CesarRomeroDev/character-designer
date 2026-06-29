@@ -24,16 +24,11 @@ export class CharactersListComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-
+    this.isLoading.set(true);
+    this.characterList();
+    this.isLoading.set(false);
     this.flowbiteService.loadFlowbite(flowbite => {
-
-      setTimeout(() => {
-        this.isLoading.set(false);
-      },200);
-
       flowbite = initFlowbite();
     });
-
-
   }
 }

@@ -18,6 +18,7 @@ import { AssetMapper } from '../../mapper/character.mapper';
 })
 export default class WorkComponent implements OnInit{
 
+  public isLoading = signal(true);
   private title = inject(Title);
   private meta = inject(Meta);
   private projectsService = inject(ProjectsService);
@@ -30,32 +31,32 @@ export default class WorkComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-
-
+    this.getProjects();
     this.flowbiteService.loadFlowbite(flowbite => {
       flowbite = initFlowbite();
       this.title.setTitle('Project');
       this.meta.updateTag( { name: 'description', content: 'Esté es mi Trabajo' } );
       this.meta.updateTag( { name: 'og:title', content: 'Project' } );
       this.meta.updateTag( { name: 'keywords', content: 'Julio Arceo Juarez: illustrator & character designer' } );
-      this.getProjects();
     });
 
   }
     // Obtiene todos los proyectos y aplana todos sus assets
     // Work muestra todas las imagenes de todos los proyectos
   getProjects(){
-        this.projectsService.getAllProjects().subscribe({
-      next: (projects) => {
+      this.projectsService.getAllProjects().subscribe({
+        next: (projects) => {
         const coverAssets = projects
         .map(p => p.assets.find(a => a.orderIndex === 0))
         .filter(asset => asset !== undefined);
 
         // Convierte Asset[] a Character[] usando el mapper
-        this.workCharacter.set(AssetMapper.toCharacterArray(coverAssets));
+      this.workCharacter.set(AssetMapper.toCharacterArray(coverAssets));
+        this.isLoading.set(false);
       },
       error: (err) => {
         console.error('Error cargando proyectos:', err);
+        this.isLoading.set(false);
       }
     });
   }
