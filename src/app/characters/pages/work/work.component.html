@@ -1,3 +1,12 @@
-<div style="padding: 110px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-black w-full">
-  <characters-list [characterList]="workCharacter()" />
-</div>
+@defer ( on timer(500ms) ) {
+  <app-work-list [workList]="workCharacter()"></app-work-list>
+}@placeholder{
+  <div style="padding: 110px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-gray-800 w-full">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+      @for (work of workCharacter(); track $index) {
+        <shared-skeleton-loader [heightImg]="work.height"></shared-skeleton-loader>
+      }
+    </div>
+  </div>
+}
+

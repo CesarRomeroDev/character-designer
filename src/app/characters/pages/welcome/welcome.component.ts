@@ -1,57 +1,63 @@
 import {
-  ChangeDetectionStrategy, Component,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component,
   inject, OnInit, PLATFORM_ID, signal
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { initFlowbite } from 'flowbite';
-import { FlowbiteService } from '../../../../services/flowbite.service';
 import { ProjectsService } from '../../services/projects.service';
 import { Character } from '../../interfaces/character.interface';
 import { AssetMapper } from '../../mapper/character.mapper';
-import { SkeletonLoaderComponent } from '../../../shared/components/ui/skeleton-loader/skeleton-loader.component';
+import { isPlatformBrowser } from '@angular/common';
+import { initFlowbite } from 'flowbite';
+import { CardComponent } from "../../components/card/card.component";
 
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [RouterModule, SkeletonLoaderComponent],
+  imports: [RouterModule, CardComponent],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class WelcomeComponent implements OnInit {
+export default class WelcomeComponent implements OnInit{
 
-  public isLoading = signal(true);
-  private platformId = inject(PLATFORM_ID);
   private projectsService = inject(ProjectsService);
+  private cdr = inject(ChangeDetectorRef);
+  private platformId = inject(PLATFORM_ID);
 
   welcomeCharacter = signal<Character[]>([]);
-
-  constructor(private flowbiteService: FlowbiteService) {}
+  isLoading = signal<boolean>(false);
+  error = signal<string>('');
 
   ngOnInit(): void {
-    this.isLoading.set(true);
-    this.projectsService.getAllProjects().subscribe({
-      next: (projects) => {
-        const allAssets = projects.flatMap(p => p.assets);
-        this.welcomeCharacter.set(AssetMapper.toCharacterArrayFull(allAssets));
-        this.isLoading.set(false);
-
-        // Inicializa Flowbite SOLO despues de que los datos llegaron
-        // y el DOM ya tiene los data-carousel-item renderizados
-        if (isPlatformBrowser(this.platformId)) {
-          this.flowbiteService.loadFlowbite(() => {
-            // Pequeño delay para asegurar que Angular ya pinto el @for en el DOM
-            setTimeout(() => {
-              initFlowbite();
-            }, 50);
-          });
-        }
-      },
-      error: (err) => {
-        console.error('Error cargando proyectos:', err);
-        this.isLoading.set(false);
-      }
-    });
+    this.getWelcome();
   }
+
+  async getWelcome() {
+    this.isLoading.set(true);
+    this.welcomeCharacter.set([]);
+    this.error.set('');
+
+    try {
+      const charaterWelcome = await this.projectsService.getAllProjects();
+      const mapWelcome = charaterWelcome.flatMap( character => character.assets );
+      this.welcomeCharacter.set(AssetMapper.toCharacterArrayFull(mapWelcome));
+
+      // Fuerza deteccion de cambios para que Angular pinte el @for
+      this.cdr.detectChanges();
+      // Inicializa Flowbite DESPUES de que Angular pinto los data-carousel-item
+      if (isPlatformBrowser(this.platformId)) {
+        setTimeout(() => {
+          initFlowbite();
+        }, 500);
+      }
+
+    } catch (error: any) {
+      this.error.set(error);
+      this.cdr.detectChanges();
+    }finally{
+      this.isLoading.set(false);
+      this.cdr.detectChanges();
+    }
+  }
+
 }
