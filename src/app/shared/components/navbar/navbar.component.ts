@@ -20,14 +20,14 @@ export class NavbarComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.menuItems;
     this.flowbiteService.loadFlowbite(flowbite => {
-      this.menuItems;
       flowbite = initFlowbite();
     });
   }
 
   public menuItems = routes
-    .map( route => route.children ?? [])
+    .map( (route) => { return route.children ?? []})
     .flat()
     .filter( route => !route.path?.includes('**') )
 }

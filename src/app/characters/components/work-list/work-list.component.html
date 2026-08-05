@@ -1,0 +1,9 @@
+<div style="padding: 110px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-gray-800 w-full">
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+    @for (works of workList(); track $index) {
+      <div>
+        <img style="background-color: #e0e3e4;" class="h-auto max-w-full rounded-lg" [src]="works.url" alt="">
+    </div>
+    }
+  </div>
+</div>

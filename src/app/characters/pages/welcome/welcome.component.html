@@ -1,79 +1,24 @@
-<div class="bg-white dark:bg-black w-full h-screen" style="padding: 20px 20px 20px 20px;">
+<div class="bg-white dark:bg-gray-800 w-full h-screen" style="padding: 20px 20px 20px 20px;">
   <div id="default-carousel" class="relative w-full h-full" data-carousel="slide">
       <!-- Carousel wrapper -->
       <div class="relative h-full overflow-hidden rounded-lg transition-all duration-300">
-        @for (item of welcomeCharacter(); track $index) {
-          @if (!isLoading()) {
-            <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img [src]="item.url" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
+        @if (!isLoading()) {
+            <div role="status" class="flex items-center justify-center h-screen w-full max-w-xxl bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700">
+
+              <span class="sr-only">Loading...</span>
             </div>
-          }@else{
-            <shared-skeleton-loader [heightImg]="item.height"></shared-skeleton-loader>
-          }
         }
-      </div>
-      <div class="absolute z-40" style="top: 90%; left: 50%; transform: translate(-50%, -50%);">
-        <div class="flex items-stretch  mb-5">
-
-            <svg class="w-[28px] h-[28px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
-            </svg>
-
-
-            <svg class="w-[28px] h-[28px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"/>
-            </svg>
-
-
-            <svg class="w-[28px] h-[28px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
-            </svg>
-
-        </div>
-      </div>
-      <!-- Slider indicators -->
-<!--       <div class="absolute z-30 flex  bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-          <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-      </div> -->
-      <!-- Slider controls -->
-<!--       <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg class="w-4 h-4 text-gray-900 dark:text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-              </svg>
-              <span class="sr-only">Previous</span>
-          </span>
-      </button>
-      <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg class="w-4 h-4 text-gray-900 dark:text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-              </svg>
-              <span class="sr-only">Next</span>
-          </span>
-      </button> -->
-      <div class="absolute z-40" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
-        <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-black dark:border-gray-700">
-            <h5 class="mb-2 text-sm max-sm:text-xs font-semibold font-[calluna] tracking-[0.2rem] text-[#f7aa73]">ILLUSTRATOR & CHARACTER DESIGNER</h5>
-            <p class="mb-5 text-5xl max-md:text-2xl font-semibold font-[futura-pt] tracking-widest text-[#999] dark:text-white">ARCEO JUAREZ</p>
-            <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 rtl:space-x-reverse">
-                <a [routerLink]="['/tasting-menu']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                    <div class="text-left rtl:text-right">
-                        <div class="mt-auto font-[europa] max-sm:text-xs text-sm font-light tracking-[0.2rem]">PORTFOLIO</div>
-                    </div>
-                </a>
-                <a [routerLink]="['/about']" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
-                    <div class="text-left rtl:text-right">
-                        <div class="mt-auto font-[europa] max-sm:text-xs text-sm font-light tracking-[0.2rem]">ABOUT</div>
-                    </div>
-                </a>
+        @for (item of welcomeCharacter(); track $index) {
+            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img style="background-color: #e0e3e4;" [src]="item.url" class="absolute block w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 dark:drop-shadow-[0px_0px_0_white]" alt="...">
             </div>
-        </div>
+        }
+
+      </div>
+      <div class="absolute z-40" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        @defer (on timer(500ms)) {
+          <app-card></app-card>
+        }
       </div>
     </div>
   </div>

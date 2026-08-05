@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Project } from '../interfaces/project.interface';
 
 @Injectable({
@@ -18,9 +18,12 @@ export class ProjectsService {
   private apiUrl = `${environment.apiUrl}/projects`;
 
   // Obtiene todos los proyectos con sus assets
-  getAllProjects(): Observable<Project[]>{
-    return this.http.get<Project[]>(this.apiUrl);
+  async getAllProjects(): Promise<Project[]>{
+    return await firstValueFrom( this.http.get<Project[]>(this.apiUrl) )
   }
+ /*  getAllProjects(): Observable<Project[]>{
+    return this.http.get<Project[]>(this.apiUrl);
+  } */
 
   // Obtiene un proyecto especifico por su slug con sus assets
   getBySlug(slug: string): Observable<Project> {

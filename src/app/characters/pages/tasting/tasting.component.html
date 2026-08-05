@@ -1,24 +1,22 @@
-<!-- <div class="bg-white dark:bg-black w-full h-auto" style="padding: 20px 20px 20px 20px;">
-  <characters-list ngSkipHydration [characterList]="tastingImgs()" />
-</div> -->
-<!--(scroll)="onScroll($event)" va dentro del primer div-->
-<div style="padding: 110px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-black w-full" #groupDiv >
-  <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-    @for (tasting of tastingImgsOrder(); track $index) {
-      <div class="grid gap-2">
+@defer ( on timer(500ms) ) {
+  <app-tasting-list [tastingList]="tastingImgsOrder()"></app-tasting-list>
+}@placeholder{
+  <div style="padding: 110px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-gray-800 w-full">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+      @for (tasting of tastingImgsOrder(); track $index){
+      <div class="grid gap-4">
         @for (item of tasting; track $index) {
-          @if ( !isLoading() ) {
             <div>
-                <img  class="h-auto max-w-full rounded-lg dark:drop-shadow-[0px_0px_0_white]"
-                [src]="item.url" alt="">
+              <shared-skeleton-loader [heightImg]="item.height"></shared-skeleton-loader>
             </div>
-          }@else {
-            <shared-skeleton-loader [heightImg]="item.height"></shared-skeleton-loader>
-          }
         }
       </div>
+
     }
+    </div>
   </div>
-</div>
+}
+
+
 
 <!--dark:drop-shadow-[1px_1px_0_white] Genera los bordes de la imagen a blanco cuando esta en modo oscuro-->
