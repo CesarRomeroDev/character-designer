@@ -6,7 +6,10 @@ export class AssetMapper {
   // Para galería y tasting-menu — usa url_thumb (imagen ligera 800px)
   static toCharacter(asset: Asset): Character {
     return {
-      url: asset.urlThumb ?? asset.urlFull, // si existe thumb la usa, si no usa full
+      id: asset.id,
+      urlFull: asset.urlFull,
+      urlThumb: asset.urlThumb ?? asset.urlFull, // si existe thumb la usa, si no usa full
+      orderIndex: asset.orderIndex,
       height: '64',
     };
   }
@@ -19,7 +22,10 @@ export class AssetMapper {
     // Para vista detalle del proyecto — usa url_full (imagen completa 1200px)
   static toCharacterFull(asset: Asset): Character {
     return {
-      url: asset.urlFull,
+      id: asset.id,
+      urlFull: asset.urlFull,
+      urlThumb: asset.urlThumb ?? asset.urlFull, // si existe thumb la usa, si no usa full
+      orderIndex: asset.orderIndex,
       height: '64',
     };
   }

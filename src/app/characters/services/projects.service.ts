@@ -26,7 +26,7 @@ export class ProjectsService {
   } */
 
   // Obtiene un proyecto especifico por su slug con sus assets
-  getBySlug(slug: string): Observable<Project> {
-    return this.http.get<Project>(`${this.apiUrl}/${slug}`);
+  async getBySlug(slug: string): Promise<Project> {
+    return await firstValueFrom( this.http.get<Project>(`${this.apiUrl}/${slug}`));
   }
 }

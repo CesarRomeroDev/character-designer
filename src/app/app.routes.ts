@@ -21,6 +21,12 @@ export const routes: Routes = [
         loadComponent: () => import('./characters/pages/work/work.component')
       },
       {
+        path: ':slug',
+        title: '',
+        loadComponent: () => import('./characters/components/work-details/work-details.component')
+
+      },
+      {
         path: 'about',
         title: 'About',
         loadComponent: () => import('./characters/pages/about/about.component')
