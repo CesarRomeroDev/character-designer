@@ -7,6 +7,7 @@ import { Character } from '../../interfaces/character.interface';
 import { AssetMapper } from '../../mapper/character.mapper';
 import { SkeletonLoaderComponent } from '../../../shared/components/ui/skeleton-loader/skeleton-loader.component';
 import { WorkListComponent } from "../../components/work-list/work-list.component";
+import { WorkCard } from '../../interfaces/work-card.interface';
 
 @Component({
   selector: 'app-work',
@@ -25,7 +26,7 @@ export default class WorkComponent implements OnInit, OnDestroy{
   title = inject(Title);
   meta = inject(Meta);
 
-  workCharacter = signal<Character[]>([]);
+  workCharacter = signal<WorkCard[]>([]);
   isLoading = signal<boolean>(false);
   error = signal<string>('');
 
@@ -54,9 +55,26 @@ export default class WorkComponent implements OnInit, OnDestroy{
     this.error.set('');
     try {
       const projectsWork = await this.projectsService.getAllProjects();
-      const projectsWorkMap = projectsWork.map( work => work.assets.find( a => a.orderIndex === 0 ) )
-            .filter( assets => assets !== undefined );
-      this.workCharacter.set(AssetMapper.toCharacterArray(projectsWorkMap));
+      const projectsWorkMap: WorkCard[] = projectsWork.map( work => {
+        const coverAsset = work.assets.find(a => a.orderIndex === 0);
+
+        //Si el proyecto no tiene assets, lo omitimos
+        if (!coverAsset) return null;
+
+        return {
+          slug: work.slug,
+          character: AssetMapper.toCharacter(coverAsset)
+        };
+
+       })
+       .filter((item): item is WorkCard => item !== null);
+       console.log(projectsWorkMap);
+      this.workCharacter.set(projectsWorkMap)
+
+
+      /* const projectsWorkMap = projectsWork.map( work => { return work.assets.find( a => a.orderIndex === 0), work.slug })
+            .filter( assets => assets); */
+      /* this.workCharacter.set(AssetMapper.toCharacterArray(projectsWorkMap)); */
     } catch (error: any) {
       this.error.set(error);
     } finally{

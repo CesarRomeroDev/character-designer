@@ -2,7 +2,7 @@
   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
     @for (works of workList(); track $index) {
       <div>
-        <img style="background-color: #e0e3e4;" class="h-auto max-w-full rounded-lg" [src]="works.url" alt="">
+        <img [routerLink]="['/' + works.slug]" style="background-color: #e0e3e4;" class="h-auto max-w-full rounded-lg cursor-pointer" [src]="works.character.urlThumb" alt="">
     </div>
     }
   </div>

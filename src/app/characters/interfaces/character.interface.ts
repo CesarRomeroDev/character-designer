@@ -1,4 +1,7 @@
 export interface Character {
-  url: string;
-  height: string;
+  id?: string;
+  urlFull?: string;
+  urlThumb?: string;
+  orderIndex?: number;
+  height?: string;
 }
