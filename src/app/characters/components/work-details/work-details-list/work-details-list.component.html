@@ -1,0 +1,12 @@
+<div style="padding: 100px 20px 20px 20px;" class=" h-screen overflow-y-scroll bg-white dark:bg-gray-800 w-full">
+    @for (works of itemBySlugList(); track $index) {
+      <div class="pt-5">
+        @defer (on viewport; prefetch on idle) {
+          <img style="background-color: #e0e3e4;" class="shadow-xl rounded-3xl w-full max-w-full" [src]="works.urlFull" alt="">
+        }@placeholder {
+          <shared-skeleton-loader [heightImg]="'96'"></shared-skeleton-loader>
+        }
+    </div>
+    }
+
+</div>

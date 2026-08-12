@@ -27,7 +27,7 @@ export default class WorkComponent implements OnInit, OnDestroy{
   meta = inject(Meta);
 
   workCharacter = signal<WorkCard[]>([]);
-  isLoading = signal<boolean>(false);
+  isLoading = signal<boolean>(true);
   error = signal<string>('');
 
   constructor(
@@ -68,7 +68,6 @@ export default class WorkComponent implements OnInit, OnDestroy{
 
        })
        .filter((item): item is WorkCard => item !== null);
-       console.log(projectsWorkMap);
       this.workCharacter.set(projectsWorkMap)
 
 

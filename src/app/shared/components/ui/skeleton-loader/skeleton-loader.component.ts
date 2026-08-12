@@ -10,11 +10,12 @@ import { Component, computed, input } from '@angular/core';
 export class SkeletonLoaderComponent {
 
   heightImg = input<string>();
+  heigtDetails = input<string>();
   whithImg = input<string>();
 
     // Clases dinámicas para la imagen
   imageClasses = computed(() => {
-    const baseClasses = `flex items-center justify-center h-${this.heightImg()} w-full max-w-xxl bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700`;
+    const baseClasses = `flex items-center justify-center h-${this.heightImg()?? this.heigtDetails()} w-full max-w-xxl bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700`;
     return baseClasses;
   });
 }

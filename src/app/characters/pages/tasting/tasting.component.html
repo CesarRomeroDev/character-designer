@@ -1,9 +1,7 @@
-@defer ( on timer(500ms) ) {
-  <app-tasting-list [tastingList]="tastingImgsOrder()"></app-tasting-list>
-}@placeholder{
+@if (isLoading()) {
   <div style="padding: 110px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-gray-800 w-full">
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-      @for (tasting of tastingImgsOrder(); track $index){
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-4">
+    @for (tasting of tastingImgsOrder(); track $index){
       <div class="grid gap-4">
         @for (item of tasting; track $index) {
             <div>
@@ -15,7 +13,11 @@
     }
     </div>
   </div>
+}@else {
+  <app-tasting-list [tastingList]="tastingImgsOrder()"></app-tasting-list>
 }
+
+
 
 
 
