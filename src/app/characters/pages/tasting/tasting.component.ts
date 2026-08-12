@@ -19,7 +19,7 @@ export default class TastingComponent implements OnInit, OnDestroy{
 
   private projectsServices = inject(ProjectsService);
 
-  isLoading = signal(false);
+  isLoading = signal(true);
   tastingImgs = signal<Character[]>([]);
   error = signal<string>('');
   title = inject(Title);

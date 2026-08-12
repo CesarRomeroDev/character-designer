@@ -4,11 +4,12 @@ import { Character } from '../../interfaces/character.interface';
 import { ProjectsService } from '../../services/projects.service';
 import { AssetMapper } from '../../mapper/character.mapper';
 import { SkeletonLoaderComponent } from '../../../shared/components/ui/skeleton-loader/skeleton-loader.component';
+import { WorkDetailsListComponent } from "./work-details-list/work-details-list.component";
 
 @Component({
   selector: 'app-work-details',
   standalone: true,
-  imports: [SkeletonLoaderComponent],
+  imports: [SkeletonLoaderComponent, WorkDetailsListComponent],
   templateUrl: './work-details.component.html',
   styleUrl: './work-details.component.css'
 })
@@ -21,9 +22,10 @@ export default class WorkDetailsComponent implements OnInit{
   private projectService = inject(ProjectsService);
   workSlug = inject(ActivatedRoute).snapshot.params['slug'];
 
-  isLoading = signal(false);
+  isLoading = signal(true);
   itemBySlug = signal<Character[]>([]);
   error = signal<string>('');
+  botton = signal<boolean>(false);
 
 
   async getWorkSlug(){
@@ -39,6 +41,11 @@ export default class WorkDetailsComponent implements OnInit{
     }finally{
       this.isLoading.set(false);
     }
+  }
+
+  isBotton(is: boolean){
+    console.log(this.botton.set(is))
+    return this.botton.set(is);
   }
 
 }
