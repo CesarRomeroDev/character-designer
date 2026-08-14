@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit{
   public menuItems = routes
     .map( (route) => { return route.children ?? []})
     .flat()
-    .filter( route => !route.path?.includes('**') && !route.path?.startsWith(':'));
+    .filter( route => !route.path?.includes('**') && !route.path?.startsWith('by/:'));
 
     //Metodo para cerrar el menu
      public closeMenu(): void {
