@@ -5,7 +5,7 @@
         @for (item of tasting; track $index) {
           @defer ( on viewport; prefetch on idle ) {
             <div>
-                <img style="background-color: #e0e3e4;" class="transition-transform duration-300 transform hover:translate-x-2 hover:-translate-y-2 shadow-xl h-auto max-w-full rounded-lg" [src]="item.urlThumb" alt="">
+                <img [routerLink]="['/tasting-menu/', item.id]" style="background-color: #e0e3e4;" class="cursor-pointer transition-transform duration-300 transform hover:translate-x-2 hover:-translate-y-2 shadow-xl h-auto max-w-full rounded-lg" [src]="item.urlThumb" alt="">
             </div>
           }@placeholder {
             <shared-skeleton-loader [heightImg]="'64'"></shared-skeleton-loader>

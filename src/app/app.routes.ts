@@ -13,7 +13,13 @@ export const routes: Routes = [
       {
         path: 'tasting-menu',
         title: 'Tasting Menu',
-        loadComponent: () => import('./characters/pages/tasting/tasting.component')
+        loadComponent: () => import('./characters/pages/tasting/tasting.component'),
+        children: [
+          {
+            path: ':id',
+            loadComponent: () => import('./characters/components/tasting-details-modal/tasting-details-modal.component')
+          }
+        ]
       },
       {
         path: 'work',

@@ -1,0 +1,61 @@
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+  (click)="$event.stopPropagation()"
+>
+  <div class="relative w-full max-w-2xl max-h-full mx-4" (click)="$event.stopPropagation()">
+
+    <!-- Botón cerrar -->
+    <button
+      type="button"
+      (click)="closeModal()"
+      class="absolute -top-10 end-0 text-white hover:text-gray-300 z-40"
+    >
+      <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+      </svg>
+      <span class="sr-only">Cerrar</span>
+    </button>
+
+    @if (isLoading()) {
+      <div class="h-56 md:h-96 flex items-center justify-center bg-gray-200 rounded-lg animate-pulse"></div>
+    } @else if (currentAsset();) {
+
+      <div class="relative h-56 overflow-hidden rounded-lg md:h-96 bg-white dark:bg-gray-800">
+        <img style="background-color: #e0e3e4;"
+          [src]="currentAsset()?.urlFull"
+          class="absolute block w-full h-full object-contain -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+          alt=""
+        />
+      </div>
+
+      <!-- Control anterior -->
+      <button
+        type="button"
+        (click)="goPrev()"
+        class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      >
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+          <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/>
+          </svg>
+          <span class="sr-only">Anterior</span>
+        </span>
+      </button>
+
+      <!-- Control siguiente -->
+      <button
+        type="button"
+        (click)="goNext()"
+        class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+      >
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50">
+          <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+          </svg>
+          <span class="sr-only">Siguiente</span>
+        </span>
+      </button>
+
+    }
+  </div>
+</div>
