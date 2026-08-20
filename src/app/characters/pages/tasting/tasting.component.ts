@@ -7,10 +7,11 @@ import { initFlowbite } from 'flowbite';
 import { ProjectsService } from '../../services/projects.service';
 import { AssetMapper } from '../../mapper/character.mapper';
 import { TastingListComponent } from "../../components/tasting-list/tasting-list.component";
+import { RouterModule } from "@angular/router";
 @Component({
   selector: 'app-tasting',
   standalone: true,
-  imports: [SkeletonLoaderComponent, TastingListComponent],
+  imports: [SkeletonLoaderComponent, TastingListComponent, RouterModule],
   templateUrl: './tasting.component.html',
   styleUrl: './tasting.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -57,7 +58,7 @@ export default class TastingComponent implements OnInit, OnDestroy{
 
       const tasting = await this.projectsServices.getAllProjects();
       const filte = tasting.flatMap( p => p.assets )
-      this.tastingImgs.set(AssetMapper.toCharacterArray(filte));
+      this.tastingImgs.set(AssetMapper.toCharacterArray(filte.reverse()));
 
     }catch(error:any){
 
