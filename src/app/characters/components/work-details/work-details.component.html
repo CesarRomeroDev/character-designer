@@ -1,8 +1,8 @@
 @if (isLoading()) {
   <div style="padding: 100px 20px 20px 20px;" class="h-screen overflow-y-scroll bg-white dark:bg-gray-800 w-full">
-      @for (n of [1,2,3,4,5]; track $index) {
+      @for (n of itemBySlug(); track $index) {
         <div class="pt-5">
-          <shared-skeleton-loader [heigtDetails]="'96'"></shared-skeleton-loader>
+          <div class="h-56 md:h-96 flex items-center justify-center bg-gray-200 rounded-lg animate-pulse"></div>
         </div>
       }
 

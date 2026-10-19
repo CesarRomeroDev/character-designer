@@ -4,7 +4,7 @@
         @defer (on viewport; prefetch on idle) {
           <img style="background-color: #e0e3e4;" class="shadow-xl rounded-3xl w-full max-w-full" [src]="works.urlFull" alt="">
         }@placeholder {
-          <shared-skeleton-loader [heightImg]="'96'"></shared-skeleton-loader>
+          <div class="h-56 md:h-96 flex items-center justify-center bg-gray-200 rounded-lg animate-pulse"></div>
         }
     </div>
     }
